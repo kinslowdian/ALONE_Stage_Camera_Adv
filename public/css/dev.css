@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.dev
+{
+	width: inherit;
+	position: absolute;
+}
+
+.dev ul
+{
+	width: inherit;
+
+	position: relative;
+}
+
+.dev li
+{
+	width: 40px;
+	height: 40px;
+	margin: 10px 0 0 10px;
+	position: relative;
+	display: inline-block;
+	background: pink;
+	border-radius: 50%;
+	cursor: pointer;
+	user-select: none;
+}
+
+.dev p
+{
+	font-size: 14px;
+	position: absolute;
+	
+	font-family: sans-serif;
+	font-weight: 100;
+	line-height: 1;
+	
+	display: block;
+	left: 50%; top: 50%;
+	transform: translate(-50%, -50%);
+	
+	color: #000;
+	
+	pointer-events: none;
+}
