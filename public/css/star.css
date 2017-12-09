@@ -8,10 +8,12 @@
 
 	position: absolute;
 		
-	transition: 1600ms ease-in-out;
+	transition: 1600ms ease-in-out 800ms;
 	
+/*
 	-webkit-filter: blur(10px);
 	filter: blur(10px);
+*/
 }
 
 .star
