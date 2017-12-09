@@ -227,7 +227,7 @@ function section_request(num)
 
 function player_init()
 {
-	player = new Player(displayList.player, 40, 60, 0, 0);
+	player = new Player(displayList.player, 112, 307, 0, 0);
 	
 	CAM.connectPlayer(player);
 }
