@@ -6,6 +6,7 @@ class Camera
 	constructor(main)
 	{
 		this.main = main;
+		this.viewerAdvanced = false;
 	}
 
 	updateResizeCamera()
@@ -25,6 +26,12 @@ class Camera
 		
 		this.viewer.x = 0;
 		this.viewer.y = 0;
+	}
+	
+	connectViewerOther(div)
+	{
+		this.viewerAdvanced = true;
+		this.viewerOther = div;
 	}
 
 	viewerFind(target)
@@ -53,6 +60,11 @@ class Camera
 		this.viewer.addEventListener("transitionend", this.viewerTransitionEvent, false);
 
 		this.viewer.setAttribute("style", "transform: translate(" + this.viewer.x + "px, " + this.viewer.y + "px);");
+		
+		if(this.viewerAdvanced)
+		{
+			this.viewerOther.setAttribute("style", "transform: translate(" + -(this.viewer.x * 0.25) + "px, " + -(this.viewer.y * 0.25) + "px);");
+		}
 	}
 
 	// OUT OF SCOPE
@@ -113,6 +125,7 @@ function project_setup()
 
 	displayList.camera = document.querySelector(".camera");
 	displayList.viewer = document.querySelector(".viewer");
+	displayList.layer0 = document.querySelector(".layer0");
 
 	section_init();
 	camera_init();
@@ -121,6 +134,8 @@ function project_setup()
 	resize_init(true);
 	
 	ui_init();
+	
+	stars_init();
 	
 	project_start();
 }
@@ -184,6 +199,7 @@ function camera_init()
 
 	CAM.updateResizeCamera();
 	CAM.connectViewer(displayList.viewer);
+	CAM.connectViewerOther(displayList.layer0);
 }
 
 function camera_newFocus()

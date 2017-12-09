@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+
+.layer0
+{
+	width: 2000px;
+	height: 1333px;
+
+	position: absolute;
+		
+	transition: 1600ms ease-in-out;
+	
+	-webkit-filter: blur(10px);
+	filter: blur(10px);
+}
+
+.star
+{
+	width: 10px;
+	height: 10px;
+	
+	position: absolute;
+	
+	background: #fff;
+}
