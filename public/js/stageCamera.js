@@ -5,14 +5,14 @@ class Camera
 {
 	constructor(main)
 	{
-		this.main = main;
+		this.htmlAttach = main;
 		this.viewerAdvanced = false;
 	}
 
 	updateResizeCamera()
 	{
-		this.w = this.main.offsetWidth;
-		this.h = this.main.offsetHeight;
+		this.w = this.htmlAttach.offsetWidth;
+		this.h = this.htmlAttach.offsetHeight;
 		
 		this.x = 0;
 		this.y = 0;
@@ -33,6 +33,11 @@ class Camera
 		this.viewerAdvanced = true;
 		this.viewerOther = div;
 	}
+	
+	connectPlayer(obj)
+	{
+		this.player = obj;
+	}
 
 	viewerFind(target)
 	{
@@ -52,6 +57,7 @@ class Camera
 		if(this.viewer.x != this.x || this.viewer.y != this.y)
 		{
 			this.viewerTransition();
+			this.player.playerMoveTo(sectionsARR[sectionFocus]);
 		}
 	}
 
@@ -87,7 +93,7 @@ class Section
 {
 	constructor(main, w, h, x, y, bg)
 	{
-		this.main = main;
+		this.htmlAttach = main;
 		this.w = w;
 		this.h = h;
 		this.x = x;
@@ -97,7 +103,27 @@ class Section
 
 	placement()
 	{
-		this.main.setAttribute("style", "width: " + this.w + "px; height: " + this.h + "px; transform: translate(" + this.x + "px, " + this.y + "px); background: " + this.bg + ";");
+		this.htmlAttach.setAttribute("style", "width: " + this.w + "px; height: " + this.h + "px; transform: translate(" + this.x + "px, " + this.y + "px); background: " + this.bg + ";");
+	}
+}
+
+class Player
+{
+	constructor(htmlAttach, w, h, x, y)
+	{
+		this.htmlAttach = htmlAttach;
+		this.w = w;
+		this.h = h;
+		this.x = x;
+		this.y = y;
+	}
+	
+	playerMoveTo(target)
+	{
+		var x = target.x + (target.w * 0.5);
+		var y = target.y + (target.h * 0.5);
+		
+		this.htmlAttach.setAttribute("style", "transform: translate(calc(" + x + "px - " + (this.w * 0.5) + "px), calc(" + y + "px - " + (this.h * 0.5) + "px));");	
 	}
 }
 
@@ -109,6 +135,8 @@ var sectionsARR;
 var sectionFocus;
 
 var ui;
+
+var player;
 
 var devMode = false;
 
@@ -126,6 +154,7 @@ function project_setup()
 	displayList.camera = document.querySelector(".camera");
 	displayList.viewer = document.querySelector(".viewer");
 	displayList.layer0 = document.querySelector(".layer0");
+	displayList.player = document.querySelector(".player");
 
 	section_init();
 	camera_init();
@@ -134,6 +163,8 @@ function project_setup()
 	resize_init(true);
 	
 	ui_init();
+	
+	player_init();
 	
 	stars_init();
 	
@@ -155,6 +186,8 @@ function project_start()
 	}
 	
 	section_request(0);
+	
+	player.playerMoveTo(sectionsARR[0]);
 }
 
 function section_init()
@@ -190,6 +223,13 @@ function section_request(num)
 		
 		CAM.viewerFind(sectionsARR[sectionFocus]);
 	}
+}
+
+function player_init()
+{
+	player = new Player(displayList.player, 40, 60, 0, 0);
+	
+	CAM.connectPlayer(player);
 }
 
 

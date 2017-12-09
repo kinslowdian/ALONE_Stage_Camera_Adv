@@ -168,6 +168,14 @@
 	color: #fff;	
 }
 
+.player
+{
+	width: 40px;
+	height: 60px;
+	position: absolute;
+	background: #ff0033;
+}
+
 .blend
 {
 	width: inherit;
