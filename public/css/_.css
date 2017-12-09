@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+html, body
+{
+	width: 100%;
+	height: 100%;
+}
+
+
+
+
+
+
+/* !!! RESPONSIVE !!! */
+
+/* MOBILE */
+@media only screen and (min-width: 300px)
+{
+
+}
+
+/* PHABLET */
+@media only screen and (min-width: 600px)
+{
+	
+}
+
+/* TABLET */
+@media only screen and (min-width: 900px)
+{
+
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 1200px)
+{
+
+}
