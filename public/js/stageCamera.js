@@ -143,8 +143,15 @@ var devMode = false;
 function pageLoad_init()
 {
 	trace("pageLoad_init();");
+	
+	document.addEventListener("gesturestart", project_iosKillScale, false);
 
 	project_setup();
+}
+
+function project_iosKillScale(event)
+{
+	event.preventDefault();
 }
 
 function project_setup()
