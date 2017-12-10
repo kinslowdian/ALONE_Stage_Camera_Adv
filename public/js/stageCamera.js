@@ -152,7 +152,7 @@ function pageLoad_init()
 function project_ios_fix_init()
 {
 	document.addEventListener("gesturestart", project_ios_fix_event, false);
-	document.addEventListener("touchstart", project_ios_fix_event, false);
+	// document.addEventListener("touchstart", project_ios_fix_event, false);
 	document.addEventListener("touchcancel", project_ios_fix_event, false);
 }
 
@@ -396,6 +396,7 @@ function ui_activate(obj)
 	obj.hasEvent = true;
 	obj.htmlAttach.classList.remove("ui-default");
 	obj.htmlAttach.addEventListener("click", ui_event, false);
+	obj.htmlAttach.addEventListener("touchstart", ui_event, false);
 	obj.htmlAttach.addEventListener("touchend", ui_event, false);
 }
 
@@ -413,6 +414,7 @@ function ui_reset()
 		if(ui.list[i].hasEvent)
 		{
 			ui.list[i].htmlAttach.removeEventListener("click", ui_event, false);
+			ui.list[i].htmlAttach.removeEventListener("touchstart", ui_event, false);
 			ui.list[i].htmlAttach.removeEventListener("touchend", ui_event, false);
 		}
 	}	
@@ -424,11 +426,26 @@ function ui_event(event)
 	
 	event.preventDefault();
 	
-	ui_reset();
+	trace(event.type);
 	
-	direction = event.target.dataset.direction;
+	if(event.type === "touchstart")
+	{
+		event.target.classList.add("ui-touch");
+	}
 	
-	ui_path(event.target.dataset.direction);
+	else if(event.type === "click" || event.type === "touchend")
+	{
+		ui_reset();
+		
+		if(event.type === "touchend")
+		{
+			event.target.classList.remove("ui-touch");
+		}
+		
+		direction = event.target.dataset.direction;
+		
+		ui_path(event.target.dataset.direction);	
+	}
 }
 
 function resize_init(run)

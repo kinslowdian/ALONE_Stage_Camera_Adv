@@ -105,7 +105,17 @@
 	
 /* 	box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); */
 
-	transition: opacity 200ms ease-in-out;
+	transition: 200ms ease-in-out;
+}
+
+.ui li:hover
+{
+	background: #fff;
+}
+
+.ui-touch
+{
+	background: #fff;
 }
 
 .ui li div
