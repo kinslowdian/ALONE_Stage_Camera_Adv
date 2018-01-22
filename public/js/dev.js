@@ -1,3 +1,63 @@
+// DEBUG
+var trace = function(msg){ console.log(msg); };
+
+
+var devMode = false;
+
+function pageLoad_init()
+{
+	trace("pageLoad_init();");
+	
+	project_ios_fix_init();
+
+	project_setup();
+}
+
+function project_setup()
+{
+	displayList = {};
+
+	displayList.camera = document.querySelector(".camera");
+	displayList.viewer = document.querySelector(".viewer");
+	displayList.layer0 = document.querySelector(".layer0");
+	displayList.player = document.querySelector(".player");
+
+	section_init();
+	camera_init();
+
+	// LAST
+	resize_init(true);
+	
+	ui_init();
+	
+	player_init();
+	
+	stars_init();
+	
+	project_start();
+
+	control_init();
+}
+
+function project_start()
+{
+	if(devMode)
+	{
+		dev_run();	
+	}
+	
+	else
+	{
+		var destroy = document.querySelector(".dev");
+		
+		destroy.classList.add("destroy");
+	}
+	
+	section_request(0);
+	
+	player.playerMoveTo(sectionsARR[0]);
+}
+
 function dev_run()
 {
 	dev_btns();

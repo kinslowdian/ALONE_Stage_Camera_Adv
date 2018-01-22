@@ -1,6 +1,3 @@
-// DEBUG
-var trace = function(msg){ console.log(msg); };
-
 class Camera
 {
 	constructor(main)
@@ -138,17 +135,6 @@ var ui;
 
 var player;
 
-var devMode = false;
-
-function pageLoad_init()
-{
-	trace("pageLoad_init();");
-	
-	project_ios_fix_init();
-
-	project_setup();
-}
-
 function project_ios_fix_init()
 {
 	document.addEventListener("gesturestart", project_ios_fix_event, false);
@@ -159,49 +145,6 @@ function project_ios_fix_init()
 function project_ios_fix_event(event)
 {
 	event.preventDefault();
-}
-
-function project_setup()
-{
-	displayList = {};
-
-	displayList.camera = document.querySelector(".camera");
-	displayList.viewer = document.querySelector(".viewer");
-	displayList.layer0 = document.querySelector(".layer0");
-	displayList.player = document.querySelector(".player");
-
-	section_init();
-	camera_init();
-
-	// LAST
-	resize_init(true);
-	
-	ui_init();
-	
-	player_init();
-	
-	stars_init();
-	
-	project_start();
-}
-
-function project_start()
-{
-	if(devMode)
-	{
-		dev_run();	
-	}
-	
-	else
-	{
-		var destroy = document.querySelector(".dev");
-		
-		destroy.classList.add("destroy");
-	}
-	
-	section_request(0);
-	
-	player.playerMoveTo(sectionsARR[0]);
 }
 
 function section_init()
@@ -317,10 +260,15 @@ function ui_required()
 		ui_activate(ui.R);
 		ui_activate(ui.D);		
 	}
+
+	control_on();
 }
 
-function ui_path(direction)
+function ui_path(direction, keyInput)
 {
+	let activated = false;
+	trace(direction);
+
 	switch(sectionFocus)
 	{
 		case 0:
@@ -328,11 +276,13 @@ function ui_path(direction)
 			if(direction === "R")
 			{
 				section_request(3);
+				activated = true;
 			}
 			
 			else if(direction === "D")
 			{
 				section_request(2);
+				activated = true;
 			}
 			
 			break;
@@ -343,11 +293,13 @@ function ui_path(direction)
 			if(direction === "U")
 			{
 				section_request(3);
+				activated = true;
 			}
 			
 			else if(direction === "L")
 			{
 				section_request(2);
+				activated = true;
 			}
 			
 			break;
@@ -358,11 +310,13 @@ function ui_path(direction)
 			if(direction === "U")
 			{
 				section_request(3);
+				activated = true;
 			}
 			
 			else if(direction === "R")
 			{
 				section_request(1);
+				activated = true;
 			}
 			
 			break;
@@ -373,20 +327,28 @@ function ui_path(direction)
 			if(direction === "L")
 			{
 				section_request(0);
+				activated = true;
 			}
 			
 			else if(direction === "R")
 			{
 				section_request(1);
+				activated = true;
 			}
 			
 			else if(direction === "D")
 			{
 				section_request(2);
+				activated = true;
 			}
 			
 			break;
 		}
+	}
+
+	if(activated && keyInput)
+	{
+		ui_reset();
 	}
 }
 
@@ -417,7 +379,9 @@ function ui_reset()
 			ui.list[i].htmlAttach.removeEventListener("touchstart", ui_event, false);
 			ui.list[i].htmlAttach.removeEventListener("touchend", ui_event, false);
 		}
-	}	
+	}
+
+	control_off();	
 }
 
 function ui_event(event)
@@ -444,7 +408,7 @@ function ui_event(event)
 		
 		direction = event.target.dataset.direction;
 		
-		ui_path(event.target.dataset.direction);	
+		ui_path(direction, false);	
 	}
 }
 
