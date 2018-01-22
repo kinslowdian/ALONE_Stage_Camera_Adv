@@ -60,25 +60,21 @@
 .ui-u
 {
 	left: 50%; top:0;
-	transform: translate(-50%, 0) rotate(270deg);	
 }
 
 .ui-d
 {
 	left: 50%; bottom: 0;
-	transform: translate(-50%, 0) rotate(90deg);
 }
 
 .ui-l
 {
 	left: 0; top: 50%;
-	transform: translate(0, -50%) rotate(180deg);
 }
 
 .ui-r
 {
 	right: 0; top: 50%;
-	transform: translate(0, -50%) rotate(0deg);
 }
 
 .ui-default
@@ -87,18 +83,49 @@
 	cursor: default !important;
 }
 
+.ui li
+{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	
+	position: absolute;
+	
+	background: yellow;
+	
+	user-select: none;
+	-webkit-touch-callout: none;
+	touch-callout: none;
+	
+	cursor: pointer;
+
+	transition: 200ms ease-in-out;
+}
+
 .ui li:hover
 {
-	/*background: #fff;*/
-	opacity: 0.4;
-	opacity: 1;
+	background: #fff;
 }
 
 .ui-touch
 {
-	/*background: #fff;*/
-	opacity: 0.4;
-	opacity: 1;
+	background: #fff;
+}
+
+.ui li div
+{
+	width: 30%;
+	height: 30%;
+	border-radius: 50%;
+	
+	position: absolute;
+	
+	background: #333;
+	
+	left: 50%; top: 50%;
+	transform: translate(-50%, -50%);
+	
+	pointer-events: none;
 }
 
 .ui-arrow
