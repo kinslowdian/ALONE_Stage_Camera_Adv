@@ -390,6 +390,7 @@ function ui_event(event)
 	event.preventDefault();
 	
 	trace(event.type);
+	trace(event);
 	
 	if(event.type === "touchstart")
 	{

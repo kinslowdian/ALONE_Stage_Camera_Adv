@@ -126,6 +126,8 @@
 	height: inherit;
 	position: absolute;
 
+	pointer-events: none;
+
 	background-image: url(../img/arrow.svg);
 	background-repeat: no-repeat;
 	background-position: center center;
