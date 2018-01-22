@@ -87,25 +87,6 @@
 	cursor: default !important;
 }
 
-/*.ui li
-{
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	
-	position: absolute;
-	
-	background: yellow;
-	
-	user-select: none;
-	-webkit-touch-callout: none;
-	touch-callout: none;
-	
-	cursor: pointer;
-
-	transition: 200ms ease-in-out;
-}*/
-
 .ui li:hover
 {
 	/*background: #fff;*/
@@ -120,22 +101,6 @@
 	opacity: 1;
 }
 
-/*.ui li div
-{
-	width: 30%;
-	height: 30%;
-	border-radius: 50%;
-	
-	position: absolute;
-	
-	background: #333;
-	
-	left: 50%; top: 50%;
-	transform: translate(-50%, -50%);
-	
-	pointer-events: none;
-}*/
-
 .ui-arrow
 {
 	width: 40px;
@@ -149,8 +114,6 @@
 	touch-callout: none;
 	
 	cursor: pointer;
-	
-/* 	box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); */
 
 	transition: 200ms ease-in-out;	
 

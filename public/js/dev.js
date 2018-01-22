@@ -48,7 +48,7 @@ function project_start()
 	
 	else
 	{
-		var destroy = document.querySelector(".dev");
+		let destroy = document.querySelector(".dev");
 		
 		destroy.classList.add("destroy");
 	}
@@ -76,7 +76,7 @@ function dev_btns()
 
 function dev_init()
 {
-	for(var i = 0; i < 4; i++)
+	for(let i = 0; i < 4; i++)
 	{
 		displayList["btn" + i].addEventListener("click", dev_event, false);
 	}

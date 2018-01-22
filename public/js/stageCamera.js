@@ -38,7 +38,7 @@ class Camera
 
 	viewerFind(target)
 	{
-		var vf = {};
+		let vf = {};
 
 		vf.cx = -(target.x) + ((this.w * 0.5) - (target.w * 0.5));
 		vf.cy = -(target.y) + ((this.h * 0.5) - (target.h * 0.5));
@@ -117,8 +117,8 @@ class Player
 	
 	playerMoveTo(target)
 	{
-		var x = target.x + (target.w * 0.5);
-		var y = target.y + (target.h * 0.5);
+		let x = target.x + (target.w * 0.5);
+		let y = target.y + (target.h * 0.5);
 		
 		this.htmlAttach.setAttribute("style", "transform: translate(calc(" + x + "px - " + (this.w * 0.5) + "px), calc(" + y + "px - " + (this.h * 0.5) + "px));");	
 	}
@@ -156,10 +156,10 @@ function section_init()
 	displayList.section2 = document.querySelector(".section2");
 	displayList.section3 = document.querySelector(".section3");
 	
-	var s0 = new Section(displayList.section0, 100, 100, 40, 40, "#333");
-	var s1 = new Section(displayList.section1, 320, 568, 1500, 400, "#F49390");
-	var s2 = new Section(displayList.section2, 180, 180, 200, 1000, "#C45AB3");
-	var s3 = new Section(displayList.section3, 200, 200, 400, 10, "#631A86");
+	let s0 = new Section(displayList.section0, 100, 100, 40, 40, "#333");
+	let s1 = new Section(displayList.section1, 320, 568, 1500, 400, "#F49390");
+	let s2 = new Section(displayList.section2, 180, 180, 200, 1000, "#C45AB3");
+	let s3 = new Section(displayList.section3, 200, 200, 400, 10, "#631A86");
 
 	s0.placement();
 	s1.placement();
@@ -227,7 +227,7 @@ function ui_init()
 	ui.list.push(ui.L);
 	ui.list.push(ui.R);
 	
-	for(var i in ui.list)
+	for(let i in ui.list)
 	{
 		ui.list[i].show = false;
 		ui.list[i].hasEvent = false;
@@ -267,7 +267,6 @@ function ui_required()
 function ui_path(direction, keyInput)
 {
 	let activated = false;
-	trace(direction);
 
 	switch(sectionFocus)
 	{
@@ -364,7 +363,7 @@ function ui_activate(obj)
 
 function ui_reset()
 {
-	for(var i in ui.list)
+	for(let i in ui.list)
 	{
 		if(ui.list[i].show)
 		{
@@ -386,7 +385,7 @@ function ui_reset()
 
 function ui_event(event)
 {
-	var direction; 
+	let direction; 
 	
 	event.preventDefault();
 	

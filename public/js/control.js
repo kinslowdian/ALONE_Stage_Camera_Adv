@@ -42,8 +42,6 @@ function control_event(event)
 {
 	let keyName = event.key.toUpperCase();
 	
-	trace(keyName);
-	
 	switch(keyName)
 	{
 		case "ARROWUP":
