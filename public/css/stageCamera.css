@@ -60,25 +60,25 @@
 .ui-u
 {
 	left: 50%; top:0;
-	transform: translate(-50%, 0);	
+	transform: translate(-50%, 0) rotate(270deg);	
 }
 
 .ui-d
 {
 	left: 50%; bottom: 0;
-	transform: translate(-50%, 0);
+	transform: translate(-50%, 0) rotate(90deg);
 }
 
 .ui-l
 {
 	left: 0; top: 50%;
-	transform: translate(0, -50%);
+	transform: translate(0, -50%) rotate(180deg);
 }
 
 .ui-r
 {
 	right: 0; top: 50%;
-	transform: translate(0, -50%);
+	transform: translate(0, -50%) rotate(0deg);
 }
 
 .ui-default
@@ -87,7 +87,7 @@
 	cursor: default !important;
 }
 
-.ui li
+/*.ui li
 {
 	width: 40px;
 	height: 40px;
@@ -102,23 +102,25 @@
 	touch-callout: none;
 	
 	cursor: pointer;
-	
-/* 	box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); */
 
 	transition: 200ms ease-in-out;
-}
+}*/
 
 .ui li:hover
 {
-	background: #fff;
+	/*background: #fff;*/
+	opacity: 0.4;
+	opacity: 1;
 }
 
 .ui-touch
 {
-	background: #fff;
+	/*background: #fff;*/
+	opacity: 0.4;
+	opacity: 1;
 }
 
-.ui li div
+/*.ui li div
 {
 	width: 30%;
 	height: 30%;
@@ -132,7 +134,52 @@
 	transform: translate(-50%, -50%);
 	
 	pointer-events: none;
+}*/
+
+.ui-arrow
+{
+	width: 40px;
+	height: 40px;
+	border-radius: 0;
+	
+	position: absolute;
+	
+	user-select: none;
+	-webkit-touch-callout: none;
+	touch-callout: none;
+	
+	cursor: pointer;
+	
+/* 	box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); */
+
+	transition: 200ms ease-in-out;	
+
+	transform-origin: 50% 50%;
 }
+
+.ui-arrow > div
+{
+	width: inherit;
+	height: inherit;
+	position: absolute;
+
+	background-image: url(../img/arrow.svg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100% 100%;
+
+	animation: uiArrowFrames 800ms steps(4) infinite;
+}
+
+@keyframes uiArrowFrames
+{
+	0%		{transform: translateX(0);}
+	40%		{transform: translateX(-100%);}
+	80%  	{transform: translateX(0);}
+	100%	{transform: translateX(0);}
+}
+
+
 
 .viewer
 {
