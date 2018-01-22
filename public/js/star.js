@@ -21,11 +21,11 @@ class Star
 
 function stars_init()
 {
-	var htmlCreate = "";
+	let htmlCreate = "";
 	
-	for(var i = 0; i < 200; i++)
+	for(let i = 0; i < 200; i++)
 	{
-		var s = new Star(i);
+		let s = new Star(i);
 		s.build();
 		
 		htmlCreate += s.read();
