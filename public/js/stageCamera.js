@@ -232,6 +232,28 @@ function ui_init()
 		ui.list[i].show = false;
 		ui.list[i].hasEvent = false;
 	}
+
+	ui.HINT_U = {};
+	ui.HINT_D = {};
+	ui.HINT_L = {};
+	ui.HINT_R = {};
+
+	ui.hintList = new Array();
+
+	ui.HINT_U.htmlAttach = document.querySelector(".ui-hint .ui-u");
+	ui.HINT_D.htmlAttach = document.querySelector(".ui-hint .ui-d");
+	ui.HINT_L.htmlAttach = document.querySelector(".ui-hint .ui-l");
+	ui.HINT_R.htmlAttach = document.querySelector(".ui-hint .ui-r");
+
+	ui.hintList.push(ui.HINT_U);
+	ui.hintList.push(ui.HINT_D);
+	ui.hintList.push(ui.HINT_L);
+	ui.hintList.push(ui.HINT_R);
+
+	for(let j in ui.hintList)
+	{
+		ui.hintList[j].show = false;
+	}
 }
 
 function ui_required()
@@ -240,25 +262,38 @@ function ui_required()
 	{
 		ui_activate(ui.R);
 		ui_activate(ui.D);
+
+		hint_activate(ui.HINT_R);
+		hint_activate(ui.HINT_D);
 	}
 	
 	else if(sectionFocus === 1)
 	{
 		ui_activate(ui.L);
-		ui_activate(ui.U);		
+		ui_activate(ui.U);
+
+		hint_activate(ui.HINT_L);
+		hint_activate(ui.HINT_U);	
 	}
 	
 	else if(sectionFocus === 2)
 	{
 		ui_activate(ui.R);
-		ui_activate(ui.U);		
+		ui_activate(ui.U);
+
+		hint_activate(ui.HINT_R);
+		hint_activate(ui.HINT_U);	
 	}
 	
 	else if(sectionFocus === 3)
 	{
 		ui_activate(ui.L);
 		ui_activate(ui.R);
-		ui_activate(ui.D);		
+		ui_activate(ui.D);
+
+		hint_activate(ui.HINT_L);
+		hint_activate(ui.HINT_R);
+		hint_activate(ui.HINT_D);	
 	}
 
 	control_on();
@@ -348,6 +383,7 @@ function ui_path(direction, keyInput)
 	if(activated && keyInput)
 	{
 		ui_reset();
+		hint_reset();
 	}
 }
 
@@ -400,6 +436,7 @@ function ui_event(event)
 	else if(event.type === "click" || event.type === "touchend")
 	{
 		ui_reset();
+		hint_reset();
 		
 		if(event.type === "touchend")
 		{
@@ -409,6 +446,24 @@ function ui_event(event)
 		direction = event.target.dataset.direction;
 		
 		ui_path(direction, false);	
+	}
+}
+
+function hint_activate(obj)
+{
+	obj.show = true;
+	obj.htmlAttach.classList.remove("ui-default");
+}
+
+function hint_reset()
+{
+	for(let i in ui.hintList)
+	{
+		if(ui.hintList[i].show)
+		{
+			ui.hintList[i].show = false;
+			ui.hintList[i].htmlAttach.classList.add("ui-default");	
+		}
 	}
 }
 
