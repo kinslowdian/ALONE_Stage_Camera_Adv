@@ -43,3 +43,20 @@
 	
 	pointer-events: none;
 }
+
+.keyboard
+{
+	width: 100px;
+	height: 100px;
+
+	position: absolute;
+	left: 50%; bottom: 0;
+	transform: translateX(-50%);
+
+	cursor: pointer;
+
+	background-image: url(../img/keyboard.svg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100% 100%;
+}
